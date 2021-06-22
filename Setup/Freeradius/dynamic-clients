@@ -18,10 +18,10 @@ server dynamic_client_server {
 			FreeRADIUS-Client-Require-MA = no
 			FreeRADIUS-Client-NAS-Type = "other"
 		}
-		if (`/usr/bin/php /var/www/htdocs/radius-client.php secret %{Packet-Src-IP-Address}` != "unknown") {
+		if (`/usr/bin/php /var/www/html/motp/radius-client.php secret %{Packet-Src-IP-Address}` != "unknown") {
 			update control {
-				FreeRADIUS-Client-Secret = `/usr/bin/php /var/www/htdocs/radius-client.php secret %{Packet-Src-IP-Address}`
-				FreeRADIUS-Client-Shortname = `/usr/bin/php /var/www/htdocs/radius-client.php shortname %{Packet-Src-IP-Address}`
+				FreeRADIUS-Client-Secret = `/usr/bin/php /var/www/html/motp/radius-client.php secret %{Packet-Src-IP-Address}`
+				FreeRADIUS-Client-Shortname = `/usr/bin/php /var/www/html/motp/radius-client.php shortname %{Packet-Src-IP-Address}`
 			}
 			ok
 		}

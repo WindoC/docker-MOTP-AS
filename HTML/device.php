@@ -36,13 +36,13 @@ if ($device) {
 if (! $device) $device = new Device();
 
 if ($action == "lock") {
-	$device->enabled = FALSE;
+	$device->enabled = 0;
 	update_device ($device);
 	log_audit($_SESSION['user'],"device lock","Device #$device->id: $device->name");
 }
 
 if ($action == "reset") {
-	$device->enabled = TRUE;
+	$device->enabled = 1;
 	$device->offset = 0;
 	update_device ($device);
 	log_audit($_SESSION['user'],"device reset","Device #$device->id: $device->name");
@@ -59,7 +59,7 @@ if ($action == "insert") {
 	if (isset($_POST['name']))     $device->name     = input($_POST['name']);
 	if (isset($_POST['secret']))   $device->secret   = input($_POST['secret']);
 	if (isset($_POST['timezone'])) $device->timezone = input($_POST['timezone']);
-	if (isset($_POST['ldap']))     $device->ldap = TRUE ; else $device->ldap = FALSE;
+	if (isset($_POST['ldap']))     $device->ldap = 1 ; else $device->ldap = 0;
 
 	$device->secret = strtolower($device->secret);
 

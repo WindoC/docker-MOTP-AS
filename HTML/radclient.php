@@ -19,7 +19,7 @@ $client=get_radclient($clientid);
 if (! $client) $client = new Rad_Client();
 
 if ($action == "disable") {
-	$client->enabled = FALSE;
+	$client->enabled = 0;
 	update_radclient ($client);
 	rad_save();
 	log_audit($_SESSION['user'],"radclient lock","Client: $client->name ($client->ipv4$client->ipv6)");
@@ -27,7 +27,7 @@ if ($action == "disable") {
 }
 
 if ($action == "enable") {
-	$client->enabled = TRUE;
+	$client->enabled = 1;
 	update_radclient ($client);
 	rad_save();
 	log_audit($_SESSION['user'],"radclient reset","Client: $client->name ($client->ipv4$client->ipv6)");

@@ -26,7 +26,8 @@ function error_msg ($str = FALSE) {
 
 function input ($string) {
 	$string = htmlspecialchars($string,ENT_QUOTES);
-	$string = mysql_real_escape_string($string);
+	global $dbc;
+	$string = mysqli_real_escape_string($dbc,$string);
 	return $string;
 }
 

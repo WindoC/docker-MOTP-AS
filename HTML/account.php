@@ -39,7 +39,7 @@ if ($action == "insert") {
 		if ( $_POST['pin'] != "****" ) 
 				     $account->pin      = input($_POST['pin']);
 	}
-	if (isset($_POST['ldap']))   $account->ldap = TRUE ; else $account->ldap = FALSE;
+	if (isset($_POST['ldap']))   $account->ldap = 1 ; else $account->ldap = 0;
 
 	$user=get_user($account->userid);
 	$userrole=get_user_role($user->user);

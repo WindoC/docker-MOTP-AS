@@ -1,13 +1,13 @@
 
 -- database --
 
-CREATE DATABASE `motp` DEFAULT CHARACTER SET latin1 ;
+CREATE DATABASE IF NOT EXISTS `motp` DEFAULT CHARACTER SET latin1 ;
 USE `motp`;
 
 
 -- db access user -- 
 
-CREATE USER 'motp'@'localhost' IDENTIFIED BY 'motp';	### PLEASE CHANGE PASSWORD ###
+CREATE USER IF NOT EXISTS 'motp'@'localhost' IDENTIFIED BY 'motp';	### PLEASE CHANGE PASSWORD ###
 GRANT SELECT,INSERT,UPDATE,DELETE ON motp.* TO 'motp'@'localhost';
 
 
@@ -55,6 +55,8 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `ldap` bool NOT NULL default FALSE,
   PRIMARY KEY  (`id`)
 ) ;
+
+SET SQL_MODE='ALLOW_INVALID_DATES';
 
 CREATE TABLE IF NOT EXISTS `static` (
   `userid` int unsigned NOT NULL,

@@ -30,13 +30,13 @@ if (! $user) $user = new User();
 
 if ($action == "lock") {
 	// check_role_rights($user->role);
-	$user->enabled = FALSE;
+	$user->enabled = 0;
 	update_user ($user);
 	log_audit($_SESSION['user'],"user lock","User #$user->id: $user->user ($user->name)");
 }
 
 if ($action == "reset") {
-	$user->enabled = TRUE;
+	$user->enabled = 1;
 	$user->tries   = 0;
 	update_user ($user);
 	log_audit($_SESSION['user'],"user reset","User #$user->id: $user->user ($user->name)");
@@ -53,7 +53,7 @@ if ($action == "insert") {
 	if (isset($_POST['user'])) $user->user = input($_POST['user']);
 	if (isset($_POST['role'])) $user->role = input($_POST['role']);
 	if (isset($_POST['name'])) $user->name = input($_POST['name']);
-	if (isset($_POST['ldap'])) $user->ldap = TRUE ; else $user->ldap = FALSE;
+	if (isset($_POST['ldap'])) $user->ldap = 1 ; else $user->ldap = 0;
 
 	if ( ($role != 'A') && ($user->role != 'U') ) 
 		stop("error", "Not allowed to create an user with role \"$user->role\"");
