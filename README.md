@@ -11,7 +11,7 @@ mkdir -p /data/motp-as/db
 2. create container
 
 ```shell
-docker push windoac/docker-motp-as
+docker pull windoac/docker-motp-as
 ```
 
 ```shell
