@@ -19,7 +19,14 @@ _term() {
 echo "Starting server..."
 /etc/init.d/mysql start
 
-# if db not init.
+# if mysql not init.
+if [ ! -d /var/lib/mysql/mysql ]; then
+  chown mysql:mysql /var/lib/mysql
+  chmod 750 /var/lib/mysql
+  mysqld --initialize --user=mysql
+fi
+
+# if motp_schema not init.
 if [ ! -d /var/lib/mysql/motp ]; then
   mysql < /MOTP/Setup/MySQL/motp_schema.sql
 fi

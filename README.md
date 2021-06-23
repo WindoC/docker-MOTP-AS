@@ -8,6 +8,8 @@
 mkdir -p /data/motp-as/db
 ```
 
+remark: for 1st run. volume "/data/motp-as/db" must be empty. (Requested by "mysqld --initialize" command)
+
 2. create container
 
 ```shell
