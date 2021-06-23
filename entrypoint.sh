@@ -15,16 +15,16 @@ _term() {
   done
 }
 
-# Start Services
-echo "Starting server..."
-/etc/init.d/mysql start
-
 # if mysql not init.
 if [ ! -d /var/lib/mysql/mysql ]; then
   chown mysql:mysql /var/lib/mysql
   chmod 750 /var/lib/mysql
-  mysqld --initialize --user=mysql
+  mysqld --initialize-insecure
 fi
+
+# Start Services
+echo "Starting server..."
+/etc/init.d/mysql start
 
 # if motp_schema not init.
 if [ ! -d /var/lib/mysql/motp ]; then
