@@ -30,6 +30,9 @@ RUN mv /etc/freeradius/3.0/mods-config/files/authorize /etc/freeradius/3.0/mods-
     a2ensite default-ssl && \
     a2ensite redirect-http && \
     rm /etc/apache2/sites-enabled/000-default.conf && \
+	ln -sf /dev/stderr /var/log/mysql/error.log && \
+    ln -sf /dev/stderr /var/log/apache2/error.log && \
+	ln -sf /dev/stdout /var/log/apache2/access.log && \
     chmod 755 /MOTP/entrypoint.sh
 
 ENTRYPOINT ["/MOTP/entrypoint.sh"]
